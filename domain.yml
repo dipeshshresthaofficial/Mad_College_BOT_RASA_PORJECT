@@ -1,0 +1,168 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet
+- goodbye
+- affirm
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+- user_wants_to_enroll
+- user_choose_program
+- user_choose_course
+- user_wants_college_info
+- user_choose_home
+- user_choose_save_seat
+- user_gave_NAME
+- user_gave_EMAIL
+- user_choose_campuslife
+- user_choose_result
+- user_gave_USN
+- user_choose_no
+- user_choose_yes
+# - user_choose_payment
+# - user_choose_PAYMENT_TYPE
+# - user_entered_AMOUNT
+# - user_choose_restart
+
+
+
+entities:
+- NAME
+- EMAIL
+- USN
+- PAYMENT_TYPE
+- AMOUNT
+
+slots:
+  NAME:
+    type: unfeaturized
+  subject:
+    type: unfeaturized
+  EMAIL:
+    type: unfeaturized
+  USN:
+    type: unfeaturized
+  PAYMENT_TYPE:
+    type: unfeaturized
+  AMOUNT:
+    type: unfeaturized
+
+forms:
+- form_info
+
+
+responses:
+  utter_greet:
+  - buttons:
+    - payload: I would like to Enroll
+      title: Enroll
+    - payload: What's so interesting about this College?
+      title: Detail Information
+
+    - payload: Show me the result
+      title: Result
+    - payload: I want to make payment
+      title: Payment
+    text: Hey! How can I help you?
+  utter_display_programs:
+  - buttons:
+    - payload: Pick UG for me
+      title: UG
+    - payload: Pick PG for me
+      title: PG
+    - payload: home section
+      title: Return to Home
+    text: Please select/type the Program name
+
+
+
+  utter_ask_NAME:
+  - text: Ok. Please provide your FIRST NAME?
+  utter_ask_EMAIL:
+  - text: Please share your CORRECT, FULL EMAIL address or else you won't get mail.
+  utter_ask_USN:
+  - text: Please provide us your USN.
+  utter_submit:
+  - text: "Your description is\n
+          - Name: {NAME}\n
+          - Email: {EMAIL}\n"
+
+  utter_display_college_info:
+  - image: 'https://eduprov.com/wp-content/uploads/2020/01/maxresdefault.jpg'
+    text: "New Horizon College of Engineering is an Autonomous private Engineering college
+            affiliated to VTU and ranked No. 3 in Bangalore and 'A' grade by NAAC. \n
+            It is located near Marathalli, outer Ring Road within the heart of big companies.\n
+            NHCE always focuses on the quality education with the industry exposure and has a highest placement rate.\n
+            Chairman of NHCE is Dr. Mohan Maghnani."
+
+  utter_goto_home:
+  - buttons:
+    - payload: go back to Home
+      title: Yes
+    - payload: bye
+      title: No
+    text: Do you want to go back to Home Section?
+
+  utter_save_seat:
+  - text: Thanks for enrolling into this course. Please share us your Email.
+
+  utter_ask_if_new_student:
+  - buttons:
+    - payload: Yes
+      title: Yes
+    - payload: No
+      title: No
+    text: "Are you the New Student?"
+
+  utter_display_eresult_link:
+    - text: "If you attended the Entrance exam then you can check your eresult here: \n http://eresults.newhorizonindia.edu/"
+
+  utter_ask_PAYMENT_TYPE:
+  - buttons:
+    - payload: fee
+      title: Fee
+    - payload: fine
+      title: Fine
+    - payload: farewell
+      title: Farewell
+    text: Which payment would you like to make?
+
+  utter_ask_AMOUNT:
+  - text: Enter the amount you want to pay?
+
+  utter_campus_life:
+  - buttons:
+    - payload: what facilities does NHCE provide?
+      title: College Life
+    text: Do you want to see our facilities?
+
+  utter_cheer_up:
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Here is something to cheer you up:'
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+actions:
+- action_display_course
+- action_display_course_info
+- utter_greet
+- utter_display_programs
+- utter_display_college_info
+- utter_cheer_up
+- utter_did_that_help
+- utter_happy
+- utter_goodbye
+- utter_iamabot
+- action_email_admission_depart
+- action_email_admitted_student
+- action_display_facilities
+- action_display_student_result
+# - action_email_payment_receipt
